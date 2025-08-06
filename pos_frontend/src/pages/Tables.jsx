@@ -8,6 +8,16 @@ const Tables = () => {
 
   const [status, setStatus] = React.useState("all");
 
+  const filteredTables = tables.filter((table) => {
+    if (status === "all") {
+      return true; // Show all tables when "All" is selected
+        } else {
+        // Show only tables where the table's status matches the selected status (e.g., "booked")
+      return table.status.toLowerCase() === status.toLowerCase();
+    }
+  });
+
+
   return (
     <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden">
         <div className="flex items-center justify-between px-10 py-4">
@@ -39,9 +49,9 @@ const Tables = () => {
         </div>
         
 
-        <div className="flex flex-wrap gap-5 overflow-y-scroll scrollbar-hide h-[calc(80vh-5rem)]">
+        <div className="flex flex-wrap gap-5 overflow-y-scroll scrollbar-hide h-[calc(80vh-2rem)]">
           {
-          tables.map((table) => {
+          filteredTables.map((table) => {
             return (
               <TableCard
                 key={table.id}

@@ -45,3 +45,4 @@ export const formatDateAndTime = (date) => {
 
   return dateAndTime;
 }
+
